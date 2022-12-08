@@ -1,0 +1,16 @@
+button {
+  border: 0;
+  background-color: var(--clr-neutral-very-dark-cyan);
+  padding: 0.5rem 2rem;
+  font-size: var(--fs-form);
+  color: var(--clr-neutral-white);
+  font-family: var(--font-family);
+  border-radius: 0.35rem;
+  cursor: pointer;
+}
+
+button:hover,
+.active {
+  background-color: var(--clr-primary-cyan);
+  color: var(--clr-neutral-very-dark-cyan);
+}

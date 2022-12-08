@@ -14,13 +14,17 @@ function Home() {
   const [persons, setPersons] = useState("");
   const [total, setTotal] = useState({
     tipPerPerson: "0.00",
-    totalPerPerson: "0.00"
+    totalPerPerson: "0.00",
+    active: false
   });
   const [currentTip, setCurrentTip] = useState(0);
 
   // tip calculator logic
   useEffect(() => {
-    if (+bill > 0 && +tip > 0 && +persons > 0) {
+    if(+persons === 0){
+      //TODO: Implement error logic
+      console.log('error')
+    }else if(+bill > 0 && +tip > 0 && +persons > 0) {
       let totalBill = (+bill * +tip) / 100;
       let tipPerson = totalBill / +persons;
       let totalPerson = +bill / +persons + tipPerson;
@@ -28,7 +32,8 @@ function Home() {
 
       setTotal({
         tipPerPerson: tipPerson.toFixed(2),
-        totalPerPerson: totalPerson.toFixed(2)
+        totalPerPerson: totalPerson.toFixed(2),
+        active: true
       });
     }
   });
@@ -40,7 +45,8 @@ function Home() {
     setTip("");
     setTotal({
       tipPerPerson: "0.00",
-      totalPerPerson: "0.00"
+      totalPerPerson: "0.00",
+      active: false
     });
     setCurrentTip("0");
   }

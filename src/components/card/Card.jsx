@@ -17,7 +17,7 @@ function Card({ total, reset }) {
         </div>
         <div className="result">${total.totalPerPerson}</div>
       </div>
-      <button className="reset" onClick={reset}>
+      <button className="reset" disabled={!total.active} onClick={reset}>
         Reset
       </button>
     </div>

@@ -9,8 +9,12 @@ button {
   cursor: pointer;
 }
 
-button:hover,
+
 .active {
   background-color: var(--clr-primary-cyan);
   color: var(--clr-neutral-very-dark-cyan);
+}
+
+button:hover{
+  background-color: var(--clr-hover);
 }

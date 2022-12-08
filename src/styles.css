@@ -18,13 +18,12 @@
   --clr-neutral-light-gray-cyan: hsl(185, 41%, 84%);
   --clr-neutral-very-light-gray-cyan: hsl(189, 41%, 97%);
   --clr-neutral-white: hsl(0, 0%, 100%);
+  --clr-hover: hsl(172, 67%, 65%);
+  --clr-button-disabled: hsl(186, 70%, 25%);
 }
 
 body {
   min-height: 100vh;
   font-family: var(--font-family);
   background-color: var(--clr-neutral-light-gray-cyan);
-  /* display: flex;
-  align-items: flex-start;
-  justify-content: center; */
 }

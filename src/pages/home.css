@@ -2,8 +2,7 @@
   background-color: var(--clr-neutral-white);
   border-radius: 1rem;
   padding: 2rem;
-  display: flex;
-  flex-direction: column;
+  display: grid;
   gap: 2rem;
   margin-top: 2rem;
   --form-input-color: var(--clr-neutral-very-dark-cyan);
@@ -35,19 +34,19 @@ h3 {
   caret-color: var(--focus-color);
   text-align: right;
   background-color: var(--clr-neutral-very-light-gray-cyan);
-  padding: 1rem;
+  padding: 0.5rem 1rem;
   font-family: var(--font-family);
   width: 100%;
 }
 
 .input-group div img {
   position: absolute;
-  top: 1.5rem;
+  top: 1rem;
   left: 1rem;
 }
 
 input[type="tel"]:focus {
-  outline-color: var(--focus-color);
+  outline-color: var(--clr-primary-cyan);
 }
 
 .button-group {
@@ -71,4 +70,17 @@ input[type="tel"]:focus {
 
 .custom::placeholder {
   color: var(--clr-neutral-dark-gray-cyan);
+}
+
+@media (min-width: 50rem) {
+  .container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 60rem;
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 4rem;
+  }
+  .button-group {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }

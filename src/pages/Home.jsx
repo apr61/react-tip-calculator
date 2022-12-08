@@ -14,7 +14,7 @@ function Home() {
   const [persons, setPersons] = useState("");
   const [total, setTotal] = useState({
     tipPerPerson: "0.00",
-    totalPerPerson: "0.00"
+    totalPerPerson: "0.00",
   });
   const [currentTip, setCurrentTip] = useState(0);
 
@@ -28,7 +28,7 @@ function Home() {
 
       setTotal({
         tipPerPerson: tipPerson.toFixed(2),
-        totalPerPerson: totalPerson.toFixed(2)
+        totalPerPerson: totalPerson.toFixed(2),
       });
     }
   });
@@ -40,7 +40,7 @@ function Home() {
     setTip("");
     setTotal({
       tipPerPerson: "0.00",
-      totalPerPerson: "0.00"
+      totalPerPerson: "0.00",
     });
     setCurrentTip("0");
   }

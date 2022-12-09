@@ -22,7 +22,16 @@ h3 {
   font-size: 1rem;
 }
 
-.input-group div {
+.input-group .label-error{
+  display: flex;
+  justify-content: space-between;
+}
+
+.error{
+  color: red;
+}
+
+.input-group .img-div {
   position: relative;
 }
 
@@ -39,14 +48,21 @@ h3 {
   width: 100%;
 }
 
-.input-group div img {
+.input-group .img-div img {
   position: absolute;
   top: 1rem;
   left: 1rem;
 }
 
-input[type="tel"]:focus {
-  outline-color: var(--clr-primary-cyan);
+input:focus, 
+input:focus-visible {
+  outline: none;
+  border: 2px solid var(--clr-primary-cyan);
+}
+
+.people:focus, .tip:focus, .bill:focus{
+  outline: none;
+  border: 2px solid red;
 }
 
 .button-group {
@@ -57,7 +73,7 @@ input[type="tel"]:focus {
 }
 
 .custom {
-  padding: 0.25rem;
+  padding: 1rem;
   border: 0;
   font-size: var(--fs-form);
   color: var(--form-input-color);

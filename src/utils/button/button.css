@@ -18,3 +18,9 @@ button {
 button:hover{
   background-color: var(--clr-hover);
 }
+
+button:focus,
+button:focus-visible{
+  outline: none;
+  border: 3px solid var(--clr-primary-cyan);
+}

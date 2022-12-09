@@ -18,25 +18,41 @@ function Home() {
     active: false
   });
   const [currentTip, setCurrentTip] = useState(0);
+  const [error, setError] = useState({
+    billError: false,
+    tipError: false,
+    peopleError: false
+  })
 
   // tip calculator logic
   useEffect(() => {
-    if(+persons === 0){
-      //TODO: Implement error logic
-      console.log('error')
-    }else if(+bill > 0 && +tip > 0 && +persons > 0) {
+    if (!persons.length <= 0 && (+persons === 0 || isNaN(persons))) {
+      // person error
+      setError(oldError => ({ ...oldError, peopleError: true }))
+    } else if (!bill.length <= 0 && (+bill === 0 || isNaN(bill))) {
+      // bill error
+      setError(oldError => ({ ...oldError, billError: true }))
+    } else if (!tip.length <= 0 && (+tip === 0 || isNaN(tip))) {
+      // tip error
+      setError(oldError => ({ ...oldError, tipError: true }))
+    } else if (+bill > 0 && +tip > 0 && +persons > 0) {
       let totalBill = (+bill * +tip) / 100;
       let tipPerson = totalBill / +persons;
       let totalPerson = +bill / +persons + tipPerson;
-      console.log(tipPerson.toFixed(2), totalPerson.toFixed(2));
 
       setTotal({
         tipPerPerson: tipPerson.toFixed(2),
         totalPerPerson: totalPerson.toFixed(2),
         active: true
       });
+    } else {
+      setError({
+        billError: false,
+        tipError: false,
+        peopleError: false
+      })
     }
-  });
+  }, [bill, tip, persons, total]);
 
   // reseting all input values
   function reset() {
@@ -62,12 +78,15 @@ function Home() {
       <main className="container">
         <section className="all-inputs">
           <div className="input-group">
-            <label htmlFor="bill">Bill</label>
-            <div>
+            <div className="label-error">
+              <label htmlFor="bill">Bill</label>
+              {error.billError ? <p className="error">Can't be zero</p> : ""}
+            </div>
+            <div className="img-div">
               <img src={dollar_icon} alt="dollar icon" />
               <input
-                className="input"
-                type="tel"
+                className={error.billError? 'input bill': 'input'}
+                type="text"
                 id="bill"
                 placeholder="0"
                 value={bill}
@@ -104,22 +123,26 @@ function Home() {
                 handleFunction={() => settingTipWithButton(50)}
               />
               <input
-                type="tel"
+                type="text"
                 placeholder="Custom"
-                className="custom"
+                className={error.tipError? 'input tip': 'input'}
                 onFocus={() => setCurrentTip(0)}
                 value={tip}
                 onChange={(e) => setTip(e.target.value)}
               />
             </div>
+              {error.tipError ? <p className="error">Can't be zero or letter</p> : ""}
           </div>
           <div className="input-group">
-            <label htmlFor="people">Number of people</label>
-            <div>
+            <div className="label-error">
+              <label htmlFor="people">Number of people</label>
+              {error.peopleError ? <p className="error">Can't be zero</p> : ''}
+            </div>
+            <div className="img-div">
               <img src={person_icon} alt="person icon" />
               <input
-                className="input people"
-                type="tel"
+                className={error.peopleError? 'input people': 'input'}
+                type="text"
                 id="people"
                 placeholder="0"
                 value={persons}
